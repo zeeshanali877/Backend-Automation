@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: yarn install
-      - run: yarn cy:verify
+      
       - run:
           name: Run API tests
           command: yarn cy:run --spec cypress/integration/api/*.spec.js
