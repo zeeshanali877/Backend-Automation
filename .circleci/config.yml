@@ -10,4 +10,4 @@ jobs:
 
       - run:
           name: Run API tests
-          command: npm cy:run --spec cypress/integration/api/*.spec.js
+          command: yarn cy:run --spec cypress/integration/api/*.spec.js
