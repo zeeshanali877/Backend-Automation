@@ -10,5 +10,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "start-server-and-test": "^2.0.0"
+  }
 }
