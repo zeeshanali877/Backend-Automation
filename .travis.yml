@@ -1,7 +1,18 @@
 language: node_js
 node_js:
   - "16"
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
 install:
   - npm install
+before_script:
+  - npm run start & # Start the API server in the background
+  - sleep 5 # Wait for the API server to start
 script:
-  - npm run cy:run
+  - npm run cy:run-api-tests
