@@ -1,7 +1,17 @@
 language: node_js
 node_js:
   - "14"
+
+addons:
+  chrome: stable
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
 install:
   - npm install
+
 script:
-  - $(npm bin)/cypress run --spec "cypress/integration/api/**/*"
+  - npm run test:api
