@@ -28,4 +28,16 @@ stages:
         cypress run --spec 'cypress/integration/api/*.spec.js'
       displayName: 'Run Cypress API tests'
     
-    - task: PublishBuildArtifacts@1
+   - task: PublishBuildArtifacts@1
+  displayName: 'Publish Web Artifact'
+  inputs:
+    PathtoPublish: '$(Build.BinariesDirectory)/$(Build.BuildId)'
+    ArtifactName: 'drop-$(Build.BuildId)'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish ARM Artifact'
+  inputs:
+    PathtoPublish: 'deploy/'
+    ArtifactName: 'drop-arm'
+    publishLocation: 'Container'
