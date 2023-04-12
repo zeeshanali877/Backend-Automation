@@ -27,3 +27,5 @@ stages:
     - script: |
         cypress run --spec 'cypress/integration/api/*.spec.js'
       displayName: 'Run Cypress API tests'
+    
+    - task: PublishBuildArtifacts@1
