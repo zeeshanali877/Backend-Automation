@@ -2,6 +2,11 @@ pipeline{
     agent any
     
     stages {
+         stage('Install npm') {
+            steps {
+        sh 'curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -'
+        sh 'apt-get install -y nodejs'
+    }
         stage('Build') {
             steps {
                 sh 'npm ci'
@@ -15,7 +20,7 @@ pipeline{
                 }
             }
         }
-        
+}
         stage('Test') {
             when {
                 branch 'main'
