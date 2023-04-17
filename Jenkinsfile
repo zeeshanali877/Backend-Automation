@@ -31,10 +31,6 @@ pipeline{
                     echo 'Tests failed!'
                 }
             }
-            artifacts {
-                paths 'cypress/videos', 'cypress/screenshots'
-                expireIn 2.hours
-            }
         }
     }
 }
