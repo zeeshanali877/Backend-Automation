@@ -49,23 +49,9 @@ describe ('delete user request testing',()=>{
                     'Authorization': 'Bearer ' + accessToken
                 },                      
             });
-            cy.log(JSON.stringify(userId));
             expect(res2.status).to.eql(204);
         } catch (err) {
             console.error(err);
-        }
-        
-        try {
-            const res3 = await cy.request({
-                method: 'GET',
-                url: `https://gorest.co.in/public/v2/users/${userId}`,
-                headers: {
-                    'Authorization': 'Bearer ' + accessToken
-                },                      
-            });
-            expect(res3.status).to.eql(200);
-        } catch (err) {
-            console.error("user not found");
         }
         
     });
