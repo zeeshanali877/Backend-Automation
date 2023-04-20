@@ -1,15 +1,14 @@
 pipeline {
     agent {
         docker {
-            image 'node:latest'
+            image 'node:16'
         }
     }
     
     stages {
         stage('Install npm') {
             steps {
-                sh 'curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -'
-                sh 'apt-get install -y nodejs'
+                sh 'brew install node'
             }
         }
         
