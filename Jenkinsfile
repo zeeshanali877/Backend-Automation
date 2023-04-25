@@ -6,12 +6,6 @@ pipeline {
     }
     
     stages {
-        stage('Install npm') {
-            steps {
-                sh 'brew install node'
-            }
-        }
-        
         stage('Build') {
             steps {
                 sh 'npm ci'
