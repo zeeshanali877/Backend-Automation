@@ -1,0 +1,11 @@
+{
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "reportDir": "cypress/reports",
+      "reportFilename": "api-tests-report",
+      "overwrite": false,
+      "html": false,
+      "json": true
+    }
+  }
+  
