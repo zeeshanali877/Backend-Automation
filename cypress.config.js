@@ -7,22 +7,21 @@ module.exports = defineConfig({
       
     },
     specPattern: 'cypress/integration/**/*.js',
-    "reporter": "cypress-multi-reporters",
-    "reporterOptions": {
-      "reporterEnabled": "mochawesome, mochawesome-merge, mochawesome-report-generator",
-      "mochawesomeReporterOptions": {
-        "reportDir": "cypress/reports/mochawesome"
-      },
-      "reportGeneratorOptions": {
-        "reportDir": "cypress/reports/html",
-        "reportFilename": "cypress-report.html",
-        "openReportInBrowser": false,
-        "metadata": {
-          "App Version": "1.2.3",
-          "Browser": "Chrome",
-          "Platform": "MacOS"
+      "reporter": "cypress-multi-reporters",
+      "reporterOptions": {
+        "reporterEnabled": "mochawesome mochawesome-merge",
+        "mochawesomeReporterOptions": {
+          "reportDir": "cypress/reports/mochawesome",
+          "overwrite": false,
+          "html": false,
+          "json": true
+        },
+        "mochawesomeMergeReporterOptions": {
+          "reportDir": "cypress/reports/mochawesome",
+          "files": [
+            "cypress/reports/mochawesome/mochawesome*.json"
+          ]
         }
       }
     }
-  },
-});
+  });
