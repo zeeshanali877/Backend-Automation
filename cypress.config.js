@@ -6,15 +6,23 @@ module.exports = defineConfig({
       // implement node event listeners here
       
     },
-    specPattern: 'cypress/integration/**/*.js'
-    
-  },
-    "reporter": "mochawesome",
+    specPattern: 'cypress/integration/**/*.js',
+    "reporter": "cypress-multi-reporters",
     "reporterOptions": {
-      "reportDir": "cypress/reports",
-      "reportFilename": "api-tests-report",
-      "overwrite": false,
-      "html": false,
-      "json": true
+      "reporterEnabled": "mochawesome, mochawesome-merge, mochawesome-report-generator",
+      "mochawesomeReporterOptions": {
+        "reportDir": "cypress/reports/mochawesome"
+      },
+      "reportGeneratorOptions": {
+        "reportDir": "cypress/reports/html",
+        "reportFilename": "cypress-report.html",
+        "openReportInBrowser": false,
+        "metadata": {
+          "App Version": "1.2.3",
+          "Browser": "Chrome",
+          "Platform": "MacOS"
+        }
+      }
     }
+  },
 });
