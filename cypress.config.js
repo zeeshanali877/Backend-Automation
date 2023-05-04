@@ -7,6 +7,14 @@ module.exports = defineConfig({
       
     },
     specPattern: 'cypress/integration/**/*.js'
+    
   },
-  
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "reportDir": "cypress/reports",
+      "reportFilename": "api-tests-report",
+      "overwrite": false,
+      "html": false,
+      "json": true
+    }
 });
