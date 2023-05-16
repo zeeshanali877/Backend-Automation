@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-05-15T12:21:15.791Z",
+    "end": "2023-05-15T12:21:21.695Z",
+    "duration": 5904,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "35bcd962-7c0b-4979-899f-88a131980f55",
+      "title": "",
+      "fullFile": "cypress/integration/apitests/DeleteUser.spec.js",
+      "file": "cypress/integration/apitests/DeleteUser.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9acdfedb-afaa-4f3e-ab8c-198d3a8d23df",
+          "title": "delete user request testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create User Test",
+              "fullTitle": "delete user request testing Create User Test",
+              "timedOut": null,
+              "duration": 5874,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) randomtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\ntestEmail = randomtext + '@gmail.com';\nlet userId;\ntry {\n  const res = await cy.request({\n    method: 'POST',\n    url: 'https://gorest.co.in/public/v2/users',\n    headers: {\n      'Authorization': 'Bearer ' + accessToken\n    },\n    body: {\n      \"name\": 'CHIKBALOLO',\n      \"email\": testEmail,\n      \"gender\": 'male',\n      \"status\": 'active'\n    }\n  });\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eql(201);\n  expect(res.body).has.property('email', testEmail);\n  expect(res.body).has.property('name', 'CHIKBALOLO');\n  expect(res.body).has.property('gender', 'male');\n  expect(res.body).has.property('status', 'active');\n  userId = res.body.id;\n} catch (err) {\n  console.error(err);\n}\n//DELETE USER REQUEST//\ntry {\n  const res2 = await cy.request({\n    method: 'DELETE',\n    url: `https://gorest.co.in/public/v2/users/${userId}`,\n    headers: {\n      'Authorization': 'Bearer ' + accessToken\n    }\n  });\n  cy.debug();\n  expect(res2.status).to.eql(204);\n} catch (err) {\n  console.error(err);\n}",
+              "err": {
+                "message": "CypressError: Cypress test was stopped while running this command.",
+                "estack": "CypressError: Cypress test was stopped while running this command.\n    at cypressErr (http://localhost:58334/__cypress/runner/cypress_runner.js:154824:18)\n    at Object.errByPath (http://localhost:58334/__cypress/runner/cypress_runner.js:154879:10)\n    at http://localhost:58334/__cypress/runner/cypress_runner.js:156492:80",
+                "diff": null
+              },
+              "uuid": "1ca3d633-4c5a-4324-8169-e59d92dafd33",
+              "parentUUID": "9acdfedb-afaa-4f3e-ab8c-198d3a8d23df",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "1ca3d633-4c5a-4324-8169-e59d92dafd33"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 5874,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
