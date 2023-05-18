@@ -1,0 +1,38 @@
+name: Cypress API Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress API tests
+        run: npx cypress run --config-file cypress.config.js --env configFile=api --reporter mochawesome --reporter-options "reportDir=cypress/reports,reportFilename=api-tests-report,html=true"
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Results
+          path: cypress/reports
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v2
+        with:
+          name: HTML Report
+          path: cypress/reports/mochawesome-report
+
