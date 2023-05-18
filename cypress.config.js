@@ -8,6 +8,11 @@ module.exports = defineConfig({
     },
     
     specPattern: 'cypress/integration/**/*.js',
+
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+    }, 
       
     }
+    
   });
