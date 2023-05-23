@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Cypress Tests
-        run: npx cypress run --config-file cypress.json --env configFile=api --reporter mochawesome --reporter-options "reportDir=cypress/reports,reportFilename=api-tests-report,html=true"
+        run: npx cypress run --config-file cypress.config.js --env configFile=api --reporter mochawesome --reporter-options "reportDir=cypress/reports,reportFilename=api-tests-report,html=true"
 
 
       - name: Archive Test Reports
