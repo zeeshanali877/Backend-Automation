@@ -30,6 +30,8 @@ jobs:
         with:
           name: Test Reports
           path: cypress/reports
+          github_token: ${{ secrets.MY_SECRET }}
+
 
   deploy:
     needs: cypress-tests
