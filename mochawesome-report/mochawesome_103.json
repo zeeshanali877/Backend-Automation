@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-05-16T08:03:08.560Z",
+    "end": "2023-05-16T08:03:10.035Z",
+    "duration": 1475,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dba2d529-64a4-42b7-9b4e-42a7c1247b02",
+      "title": "",
+      "fullFile": "cypress/integration/apitests/updateuser.spec.js",
+      "file": "cypress/integration/apitests/updateuser.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8c4ec15d-b6a9-4e4a-a7ca-22a1f7a995cc",
+          "title": "update user request testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create User Test",
+              "fullTitle": "update user request testing Create User Test",
+              "timedOut": null,
+              "duration": 1404,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) {\n  randomtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\n}\ntestEmail = randomtext + '@gmail.com';\nlet userId;\ncy.request({\n  method: 'POST',\n  url: 'https://gorest.co.in/public/v2/users',\n  headers: {\n    'Authorization': 'Bearer ' + accessToken\n  },\n  body: {\n    \"name\": 'CHIKBALOLO',\n    \"email\": testEmail,\n    \"gender\": 'male',\n    \"status\": 'active'\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eql(201);\n  expect(res.body).to.have.property('email', testEmail);\n  expect(res.body).to.have.property('name', 'CHIKBALOLO');\n  expect(res.body).to.have.property('gender', 'male');\n  expect(res.body).to.have.property('status', 'active');\n  userId = res.body.id;\n  // PUT REQUEST //\n  cy.request({\n    method: 'PUT',\n    url: `https://gorest.co.in/public/v2/users/${userId}`,\n    headers: {\n      'Authorization': 'Bearer ' + accessToken\n    },\n    body: {\n      \"name\": 'CHIKoblashtrum',\n      \"email\": testEmail,\n      \"gender\": 'male',\n      \"status\": 'inactive'\n    }\n  }).then(res2 => {\n    cy.log(JSON.stringify(userId));\n    expect(res2.status).to.eql(200);\n    expect(res2.body).to.have.property('email', testEmail);\n    expect(res2.body).to.have.property('name', 'CHIKoblashtrum');\n    expect(res2.body).to.have.property('gender', 'male');\n    expect(res2.body).to.have.property('status', 'inactive');\n    // GET USER //\n    cy.request({\n      method: 'GET',\n      url: `https://gorest.co.in/public/v2/users/${userId}`,\n      headers: {\n        'Authorization': 'Bearer ' + accessToken\n      }\n    }).then(res3 => {\n      cy.log(JSON.stringify(res3));\n      expect(res3.status).to.eql(200);\n      expect(res3.body).to.have.property('email', testEmail);\n      expect(res3.body).to.have.property('name', 'CHIKoblashtrum');\n      expect(res3.body).to.have.property('gender', 'male');\n      expect(res3.body).to.have.property('status', 'inactive');\n    });\n  });\n});",
+              "err": {},
+              "uuid": "5a9452a6-0e1a-4ca5-b0ec-33b1b4213df2",
+              "parentUUID": "8c4ec15d-b6a9-4e4a-a7ca-22a1f7a995cc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a9452a6-0e1a-4ca5-b0ec-33b1b4213df2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1404,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

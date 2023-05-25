@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-05-15T09:59:22.434Z",
+    "end": "2023-05-15T09:59:52.934Z",
+    "duration": 30500,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ab23f588-a5d9-4385-8711-c9a24e41bb54",
+      "title": "",
+      "fullFile": "cypress/integration/apitests/postuser.spec.js",
+      "file": "cypress/integration/apitests/postuser.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d3976ac-efac-4574-905d-104d145120ef",
+          "title": "post user request testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create User Test",
+              "fullTitle": "post user request testing Create User Test",
+              "timedOut": null,
+              "duration": 30446,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var pattern = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\";\nfor (var i = 0; i < 10; i++) randomtext += pattern.charAt(Math.floor(Math.random() * pattern.length));\ntestEmail = randomtext + '@gmail.com';\ncy.request({\n  method: 'POST',\n  url: 'https://gorest.co.in/public/v2/users',\n  headers: {\n    'Authorization': 'Bearer ' + accessToken\n  },\n  body: {\n    \"id\": 3340,\n    \"name\": JSONdata.name,\n    \"email\": testEmail,\n    \"gender\": JSONdata.gender,\n    \"status\": JSONdata.status\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eql(201);\n  expect(res.body).has.property('email', testEmail);\n  expect(res.body).has.property('name', JSONdata.name);\n  expect(res.body).has.property('gender', JSONdata.gender);\n  expect(res.body).has.property('status', JSONdata.status);\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: POST\nURL: https://gorest.co.in/public/v2/users\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` timed out waiting `30000ms` for a response from your server.\n\nThe request we sent was:\n\nMethod: POST\nURL: https://gorest.co.in/public/v2/users\n\nNo response was received within the timeout.\n\nhttps://on.cypress.io/request\n    at <unknown> (http://localhost:52829/__cypress/runner/cypress_runner.js:139746:78)\n    at tryCatcher (http://localhost:52829/__cypress/runner/cypress_runner.js:8914:23)\n    at <unknown> (http://localhost:52829/__cypress/runner/cypress_runner.js:4036:41)\n    at tryCatcher (http://localhost:52829/__cypress/runner/cypress_runner.js:8914:23)\n    at Promise._settlePromiseFromHandler (http://localhost:52829/__cypress/runner/cypress_runner.js:6849:31)\n    at Promise._settlePromise (http://localhost:52829/__cypress/runner/cypress_runner.js:6906:18)\n    at Promise._settlePromise0 (http://localhost:52829/__cypress/runner/cypress_runner.js:6951:10)\n    at Promise._settlePromises (http://localhost:52829/__cypress/runner/cypress_runner.js:7027:18)\n    at _drainQueueStep (http://localhost:52829/__cypress/runner/cypress_runner.js:3621:12)\n    at _drainQueue (http://localhost:52829/__cypress/runner/cypress_runner.js:3614:9)\n    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://localhost:52829/__cypress/runner/cypress_runner.js:3630:5)\n    at Async.drainQueues (http://localhost:52829/__cypress/runner/cypress_runner.js:3500:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/integration/apitests/postuser.spec.js:18:11)",
+                "diff": null
+              },
+              "uuid": "ecf07864-a0d8-4e47-bbaa-e5a96a0b9d3f",
+              "parentUUID": "3d3976ac-efac-4574-905d-104d145120ef",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ecf07864-a0d8-4e47-bbaa-e5a96a0b9d3f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 30446,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
